@@ -1,58 +1,100 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
-  </div>
-</template>
-
-<script>
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
+    <div class="hello">
+      <div>
+          <p style="text-align: center;">
+              <span class="lover-image">
+                <a class="lover" style="backgroundPosition: center" :style="{backgroundImage:`url(${require('../assets/icon2.jpeg')})`}"></a>
+                <i class="icon-heart" />
+                <a class="lover" :style="{backgroundImage:`url(${require('../assets/icon1.jpeg')})`}"></a>
+              </span>
+            </p>
+            <p style="text-align: center;" class="day">我们的第 {{ Math.floor((endDate - startDate) / 86400000)}} 天</p>
+            <p style="text-align: center;"> 「邂逅相遇，与子偕臧」 </p>
+      </div>
+      <p> 我们的恋爱清单，记录着我们很多的第一次，相信我们还会留下更多美好的回忆。 </p>
+      <light-timeline style="margin-top: 30px;" :items='items'></light-timeline>
+      <!-- <vue-audio file="file" /> -->
+    </div>
+  </template>
+  
+  <script>
+    export default {
+    name: 'hello',
+    components: {
+    },
+    data () {
+      return {
+        startDate: 1585411200000,
+        endDate: new Date().getTime(),
+        items: [
+          {
+            tag: '03/29 10:03',
+            type: 'star',
+            color: '#49f589',
+            content: '我们第一次约会'
+          },
+          {
+            tag: '03/29 20:59',
+            type: 'circle',
+            color: 'orange',
+            content: '第一次微信电话'
+          },
+          {
+            tag: '03/29 21:32',
+            type: 'circle',
+            content: '提到的第一支乐队 「MONO」'
+          },
+          {
+            tag: '...',
+            type: 'circle',
+            color: '#49f589',
+            content: '未完待续'
+          }
+        ]
+      }
+    }
   }
-}
-</script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
+  
+  </script>
+  
+  <!-- Add "scoped" attribute to limit CSS to this component only -->
+  <style scoped>
+    div {
+      color: #606c76;
+      font-size: 14px;
+      font-family: "Helvetica Neue For Number", "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      box-sizing: border-box;
+    }
+    .hello {
+      margin-top: 10px;
+      width: 100%;
+      max-width: 500px;
+      margin: -30px auto;
+    }
+    .day {
+      font-family: impact;
+      color: #ff557d;
+      letter-spacing: 4px;
+      margin: 0 4px;
+    }
+    .lover-image {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 10px;
+      letter-spacing: -.33em;
+    }
+    .lover {
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        color: transparent;
+        vertical-align: top;
+        background-color: #ddd;
+        -webkit-background-size: cover;
+        background-size: cover;
+        border-radius: 100%;
+        box-shadow: inset 0 0 1px rgba(0,0,0,.2);
+        margin-right: 2px;
+    }
+  </style>
